@@ -17,6 +17,8 @@ navbar_fixed = true
 # theme-mode
 theme_switcher = true
 theme_default = "system" # available options [light/dark/system]
+# breadcrumb under page titles (front matter `breadcrumb: true/false` overrides)
+breadcrumb = false
 # Main Sections
 mainSections = ["blog"]
 # contact form action

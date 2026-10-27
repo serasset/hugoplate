@@ -7,6 +7,18 @@
   @apply py-16 xl:py-20;
 }
 
+/* compact page header (_partials/page-header.html): small gap before the content */
+.page-header + section {
+  @apply pt-6;
+}
+/* title hidden: first content element starts where the title would be */
+.page-header-hidden + section {
+  @apply pt-8;
+}
+.page-header-hidden + section .content > :first-child {
+  @apply mt-0;
+}
+
 /* container */
 .container {
   @apply mx-auto xl:!max-w-[1320px] px-4;

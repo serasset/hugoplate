@@ -1,9 +1,22 @@
-<section>
-  <div class="container text-center">
-    <div
-      class="from-body to-light dark:from-darkmode-body dark:to-darkmode-light rounded-2xl bg-gradient-to-b px-8 py-14">
-      <h1>{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1>
-      {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-6") }}
+{{/* Compact page header: title in the content column, optional breadcrumb.
+  - `hide_title: true` (front matter) drops the header; an empty marker stays so
+    the content's first heading starts where the title would be (components.css).
+  - `breadcrumb` (site param, overridable in front matter) shows the breadcrumb. */}}
+{{ $breadcrumb := site.Params.breadcrumb }}
+{{ if isset .Params "breadcrumb" }}
+  {{ $breadcrumb = .Params.breadcrumb }}
+{{ end }}
+{{ if .Params.hide_title }}
+  <div class="page-header page-header-hidden"></div>
+{{ else }}
+  <div class="page-header container pt-8">
+    <div class="row justify-center">
+      <div class="lg:col-10">
+        <h1 class="h2">{{ T (printf "%s" (lower .Title)) | default .Title | title }}</h1>
+        {{ if $breadcrumb }}
+          {{ partial "components/breadcrumb" (dict "Context" . "Class" "mt-2 text-sm") }}
+        {{ end }}
+      </div>
     </div>
   </div>
-</section>
+{{ end }}
