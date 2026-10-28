@@ -49,7 +49,10 @@
 
 <!-- cookie consent -->
 {{/* https://github.com/gethugothemes/hugo-modules/tree/master/components/cookie-consent */}}
-{{ partialCached "cookie-consent.html" . }}
+{{/* optional: only when the cookie-consent module is imported */}}
+{{ if templates.Exists "_partials/cookie-consent.html" }}
+  {{ partialCached "cookie-consent.html" . }}
+{{ end }}
 
 
 <!-- google adsense -->
